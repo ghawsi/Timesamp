@@ -20,10 +20,14 @@ app.get("/", function (req, res) {
 
 
 // your first API endpoint... 
-app.get("/api/hello", function (req, res) {
-  res.json({greeting: 'hello API'});
+app.get("/api/:date", function (req, res) {
+  let date = new Date();
+  const today = date.toString().split("+")
+  // console.log(Date.now())
+  res.json({"unix": Date.now(),
+            "utc": today[0]
+  });
 });
-
 
 
 // Listen on port set in environment variable or default to 3000
